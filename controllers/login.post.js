@@ -9,7 +9,7 @@ function register({ app, auth }, path = "/api/login") {
 			if (user === null) {
 				return res.status(400).send({ message });
 			}
-			const token = auth.generateToken(username);
+			const token = auth.generateToken(username, user._id);
 			return res.status(200).send({ token });
 		} catch {
 			return res.status(400).send({ message });
