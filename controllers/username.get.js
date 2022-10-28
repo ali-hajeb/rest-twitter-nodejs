@@ -12,7 +12,7 @@ function register({ app }, path = "/api/user/:username") {
 			const tweets = await Tweets.getUserTweetsCleaned(user);
 			const followers = await Users.cleanUsers(user.followers);
 			const followings = await Users.cleanUsers(user.followings);
-			return res.send({ tweets, followings, followers });
+			return res.send({ tweets, followings, followers, username: user.username, biography: user.biography, name: user.name, id: user._id });
 		} catch (err) {
 			console.error(err);
 			return res.status(400).send({ error: err });
