@@ -3,8 +3,8 @@ const jwt = require("jsonwebtoken");
 function Auth(token) {
 	this.token = token;
 
-	this.generateToken = (username) => {
-		const access = jwt.sign({ username }, this.token);
+	this.generateToken = (username, id) => {
+		const access = jwt.sign({ username, id }, this.token);
 		return access;
 	};
 
