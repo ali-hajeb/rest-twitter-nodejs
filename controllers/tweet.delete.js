@@ -6,12 +6,12 @@ function register({ app, auth }, path = "/api/delete_tweet") {
 			const { tweet_id } = req.body;
 			const tweet = await Tweet.getById(tweet_id);
 			if (tweet === null) {
-				return res.status(404);
+				return res.status(404).send();
 			}
 			tweet
 				.remove()
-				.then(() => res.status(204))
-				.catch(() => res.status(400));
+				.then(() => res.status(204).send())
+				.catch(() => res.status(400).send());
 		} catch (err) {
 			return res.status(400).send({ error: err });
 		}
